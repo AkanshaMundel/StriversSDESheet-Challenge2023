@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+
+void rotateMatrix(vector<vector<int>> &mat, int n, int m)
+{
+    // Write your code here
+    //this is que of sprial matrix
+    int left = 0;
+    int right = m-1;
+    int top = 0;
+    int down= n-1;
+    while(left<right && top<down){
+        int temp = mat[top][left];
+        for(int i = left+1 ; i<=right; i++){
+            int k = mat[top][i];
+            mat[top][i]=temp;
+            temp=k;
+        }
+        top++;
+        for(int i = top; i<=down; i++){
+              int k = mat[i][right];
+            mat[i][right]=temp;
+            temp=k;
+        }
+        right--;
+
+        if(top<=down){
+            for(int i = right ; i>=left ; i--){
+                  int k = mat[down][i];
+                    mat[down][i]=temp;
+                    temp=k;
+            }
+            down--;
+
+        }
+        if(left<=right){
+            for(int i = down ; i>=top ; i--){
+                 int k = mat[i][left];
+                mat[i][left]=temp;
+                temp=k;
+            }
+            left++;
+        }
+        mat[top-1][left-1]=temp;
+    }
+
+}
