@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+
+int subarraysXor(vector<int> &arr, int x)
+{
+    //    Write your code here.
+    int n = arr.size();
+    int cnt =0;
+    int xr=0;
+    map<int, int>mp;
+    mp[xr]=1;
+
+    for(int i =0 ; i<n ; i++){
+        xr =xr^arr[i];
+
+        int y = xr^x;
+
+        cnt +=mp[y];
+
+        mp[xr]++;//till i we are storing the prefix xor and above searcing woth remaining xor x
+
+    }
+    return cnt;
+    
+}
