@@ -1,0 +1,21 @@
+Node *rotate(Node *head, int k) {
+     // Write your code here.
+      if(head==NULL || head->next==NULL ||k ==0){return head;}
+  int cnt = 1;
+     Node* tmp= head;
+     while(tmp->next!=NULL){
+      ++cnt;
+     tmp = tmp->next;
+     }
+     tmp-> next= head; //poiting tpo strt one
+     k = k%cnt;
+     k = cnt-k;
+     //breakink the left bond
+     while(k--){
+          tmp= tmp->next;
+
+     }
+     head= tmp->next;
+     tmp->next= NULL;
+     return head;
+}
