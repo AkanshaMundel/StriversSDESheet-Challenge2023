@@ -1,0 +1,23 @@
+
+LinkedListNode<int> *cloneRandomList(LinkedListNode<int> *head)
+{
+    // Write your code here.
+
+    //using the hashmap
+    unordered_map<LinkedListNode<int>* , LinkedListNode<int>*>mp;
+   LinkedListNode<int> *tmp = head;
+    while(tmp!=NULL){
+     
+        mp[tmp]= new  LinkedListNode<int>(tmp->data);
+        tmp = tmp->next;
+        //creating deep copy
+    }
+   LinkedListNode<int> * t= head;
+    while(t!=NULL){
+        LinkedListNode<int> * node = mp[t];
+        node->next = (t->next != NULL) ? mp[t->next]:NULL;
+        node->random = (t->random != NULL) ? mp[t->random]:NULL;
+        t = t->next;
+    }
+    return mp[head];
+}
