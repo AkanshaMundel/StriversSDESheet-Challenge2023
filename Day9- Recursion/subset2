@@ -1,0 +1,19 @@
+#include <bits/stdc++.h> 
+void fun(int i , int n , vector<int>&arr, vector<int>&temp ,vector<vector<int>>&ans ){
+    ans.push_back(temp);
+    for(int j = i ; j<n ; j++){
+        if(j!=i&& arr[j]==arr[j-1]){continue;}
+        temp.push_back(arr[j]);
+        fun(j+1, n , arr, temp , ans);
+        temp.pop_back();
+    }
+}
+vector<vector<int>> uniqueSubsets(int n, vector<int> &arr)
+{
+    // Write your code here.
+    vector<vector<int>>ans;
+    vector<int>temp;
+    sort(arr.begin(), arr.end());
+    fun(0 , n , arr, temp, ans);
+    return ans;
+}
